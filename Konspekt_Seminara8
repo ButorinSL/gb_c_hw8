@@ -1,0 +1,123 @@
+Урок 8. Двумерные массивы. Продолжение
+
+Задача 1: Задайте двумерный массив. Напишите программу, которая упорядочивает по убыванию элементы каждой строки двумерного массива.
+Задача 2: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+Задача 3: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+Задача 4: * Напишите программу, которая заполнит спирально квадратный массив.
+
+
+
+Стас Луковский: // Задайте двумерный массив.
+// Напишите программу, которая поменяет местами первую и последнюю строку массива.
+
+int ReadInt(string message)
+{
+System.Console.Write($"{message} > ");
+return Convert.ToInt32(Console.ReadLine());
+}
+
+int[,] Generate2DArray(int cntRows, int cntColumns)
+{
+int[,] array = new int[cntRows, cntColumns];
+Random rnd = new Random();
+for (int i = 0; i < array.GetLength(0); i++)
+{
+for (int j = 0; j < array.GetLength(1); j++)
+{
+array[i, j] = rnd.Next(-10, 11);
+}
+}
+return array;
+}
+
+void Print2DArray(int[,] array)
+{
+for (int i = 0; i < array.GetLength(0); i++)
+{
+for (int j = 0; j < array.GetLength(1); j++)
+{
+System.Console.Write($"{array[i, j]}\t");
+}
+System.Console.WriteLine();
+}
+}
+
+void Swap(int[,] array)
+{
+int lastRow = array.GetLength(0) - 1;
+for (int j = 0; j < array.GetLength(1); j++)
+{
+int temp = array[0, j];
+array[0, j] = array[lastRow, j];
+array[lastRow, j] = temp;
+}
+}
+int cntColomns = ReadInt($"Количество колонок");
+int cntRows = ReadInt($"Количество строк");
+int[,] table = Generate2DArray(cntRows, cntColomns);
+Print2DArray(table);
+System.Console.WriteLine();
+Swap(table);
+Print2DArray(table);
+
+
+
+Стас Луковский: // Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы.
+// В случае, если это невозможно, программа должна вывести сообщение для пользователя.
+
+int ReadInt(string message)
+{
+System.Console.Write($"{message} > ");
+return Convert.ToInt32(Console.ReadLine());
+}
+
+int[,] Generate2DArray(int cntRows, int cntColumns)
+{
+int[,] array = new int[cntRows, cntColumns];
+Random rnd = new Random();
+for (int i = 0; i < array.GetLength(0); i++)
+{
+for (int j = 0; j < array.GetLength(1); j++)
+{
+array[i, j] = rnd.Next(-10, 11);
+}
+}
+return array;
+}
+
+void Print2DArray(int[,] array)
+{
+for (int i = 0; i < array.GetLength(0); i++)
+{
+for (int j = 0; j < array.GetLength(1); j++)
+{
+System.Console.Write($"{array[i, j]}\t");
+}
+System.Console.WriteLine();
+}
+}
+
+void SwapRows(int[,] array)
+{
+for (int i = 0; i < array.GetLength(0); i++)
+{
+for (int j = i; j < array.GetLength(1); j++)
+{
+int temp = array[i, j];
+array[i,j] = array[j,i];
+array[j,i] = temp;
+}
+}
+}
+int cntColimns = ReadInt($"Количество колонок");
+int cntRows = ReadInt($"Количество строк");
+int[,] table = Generate2DArray(cntRows, cntColomns);
+Print2DArray(table);
+System.Console.WriteLine();
+SwapRows(table);
+Print2DArray(table);
+
+1ч08м
+
+
+
